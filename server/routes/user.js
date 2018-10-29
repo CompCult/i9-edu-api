@@ -172,7 +172,7 @@ router.post('/update/:user_id', function(req, res) {
       var filename = req.params.user_id.toString() + timeStamp + '.jpg';
 
       Uploads.uploadFile(req.body.picture, req.params.user_id.toString(), timeStamp);
-      user.picture = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+      user.picture = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
     };
 
 
@@ -234,7 +234,7 @@ router.put('/:user_id', function(req, res) {
       var filename = req.params.user_id.toString() + timeStamp + '.jpg';
 
       Uploads.uploadFile(req.body.picture, req.params.user_id.toString(), timeStamp);
-      user.picture = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+      user.picture = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
     };
 
 

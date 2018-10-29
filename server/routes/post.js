@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
       try {
         promises = posts.map(get_author_info);
       } catch (err) {
-        res.status(400).send(err); 
+        res.status(400).send(err);
       }
 
       Promise.all(promises).then(function(results) {
@@ -50,7 +50,7 @@ router.get('/query/fields', function(req, res) {
       try {
         promises = posts.map(get_author_info);
       } catch (err) {
-        res.status(400).send(err); 
+        res.status(400).send(err);
       }
 
       Promise.all(promises).then(function(results) {
@@ -69,27 +69,27 @@ router.post('/', function(req, res) {
   if (req.body.location_lng) post.location_lng = req.body.location_lng;
   if (req.body.picture) {
     var date = new Date();
-    var timeStamp = date.toLocaleString(); 
+    var timeStamp = date.toLocaleString();
     Uploads.uploadFile(req.body.picture, req.body._user.toString(), timeStamp);
 
-    var filename = req.body._user.toString() + timeStamp + '.jpg'; 
-    post.picture = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+    var filename = req.body._user.toString() + timeStamp + '.jpg';
+    post.picture = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
   }
   if (req.body.audio) {
     var date = new Date();
-    var timeStamp = date.toLocaleString(); 
+    var timeStamp = date.toLocaleString();
     Uploads.uploadAudio(req.body.audio, req.body._user.toString(), timeStamp);
 
-    var filename = req.body._user.toString() + 'audio' + timeStamp + '.wav'; 
-    post.audio = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+    var filename = req.body._user.toString() + 'audio' + timeStamp + '.wav';
+    post.audio = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
   }
   if (req.body.video) {
     var date = new Date();
-    var timeStamp = date.toLocaleString(); 
+    var timeStamp = date.toLocaleString();
     Uploads.uploadVideo(req.body.video, req.body._user.toString(), timeStamp);
 
-    var filename = req.body._user.toString() + timeStamp + '.wav'; 
-    post.video = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+    var filename = req.body._user.toString() + timeStamp + '.wav';
+    post.video = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
   }
 
   post.save(function(err) {
@@ -110,27 +110,27 @@ router.post('/update/:post_id', function(req, res) {
         if (req.body.text_msg) post.text_msg       = req.body.text_msg;
         if (req.body.picture) {
           var date = new Date();
-          var timeStamp = date.toLocaleString(); 
+          var timeStamp = date.toLocaleString();
           Uploads.uploadFile(req.body.picture, req.body._user.toString(), timeStamp);
 
-          var filename = req.body._user.toString() + timeStamp + '.jpg'; 
-          post.picture = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+          var filename = req.body._user.toString() + timeStamp + '.jpg';
+          post.picture = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
         }
         if (req.body.audio) {
           var date = new Date();
-          var timeStamp = date.toLocaleString(); 
+          var timeStamp = date.toLocaleString();
           Uploads.uploadAudio(req.body.audio, req.body._user.toString(), timeStamp);
 
-          var filename = req.body._user.toString() + timeStamp + '.wav'; 
-          post.audio = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+          var filename = req.body._user.toString() + timeStamp + '.wav';
+          post.audio = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
         }
         if (req.body.video) {
           var date = new Date();
-          var timeStamp = date.toLocaleString(); 
+          var timeStamp = date.toLocaleString();
           Uploads.uploadVideo(req.body.video, req.body._user.toString(), timeStamp);
 
-          var filename = req.body._user.toString() + timeStamp + '.wav'; 
-          post.video = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+          var filename = req.body._user.toString() + timeStamp + '.wav';
+          post.video = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
         }
         if (req.body.location_lat) post.location_lat = req.body.location_lat;
         if (req.body.location_lng) post.location_lng = req.body.location_lng;

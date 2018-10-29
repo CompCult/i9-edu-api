@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
       try {
         promises = missions.map(inject_mission_data);
       } catch (err) {
-        res.status(400).send(err); 
+        res.status(400).send(err);
       }
 
       Promise.all(promises).then(function(results) {
@@ -85,26 +85,26 @@ router.post('/', function(req, res) {
   if (req.body.image) {
     var date = new Date();
     var timeStamp = date.toLocaleString();
-    var filename = req.body._user.toString() + timeStamp + '.jpg'; 
+    var filename = req.body._user.toString() + timeStamp + '.jpg';
 
     Uploads.uploadFile(req.body.image, req.body._user.toString(), timeStamp);
-    missionAnswer.image = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+    missionAnswer.image = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
   };
   if (req.body.audio) {
     var date = new Date();
-    var timeStamp = date.toLocaleString(); 
+    var timeStamp = date.toLocaleString();
     Uploads.uploadAudio(req.body.audio, req.body._user.toString(), timeStamp);
 
-    var filename = req.body._user.toString() + timeStamp + '.wav'; 
-    missionAnswer.audio = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+    var filename = req.body._user.toString() + timeStamp + '.wav';
+    missionAnswer.audio = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
   };
   if (req.body.video)  {
     var date = new Date();
-    var timeStamp = date.toLocaleString(); 
+    var timeStamp = date.toLocaleString();
     Uploads.uploadVideo(req.body.video, req.body._user.toString(), timeStamp);
 
-    var filename = req.body._user.toString() + timeStamp + '.mp4'; 
-    missionAnswer.video = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+    var filename = req.body._user.toString() + timeStamp + '.mp4';
+    missionAnswer.video = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
   };
 
   missionAnswer.save(function(err) {
@@ -124,27 +124,27 @@ router.put('/:mission_id', function(req, res) {
     if (req.body._group) missionAnswer._group           = req.body._group;
     if (req.body.image) {
       var date = new Date();
-      var timeStamp = date.toLocaleString(); 
+      var timeStamp = date.toLocaleString();
       Uploads.uploadFile(req.body.image, req.body._user.toString(), timeStamp);
 
-      var filename = req.body._user.toString() + timeStamp + '.jpg'; 
-      missionAnswer.image = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+      var filename = req.body._user.toString() + timeStamp + '.jpg';
+      missionAnswer.image = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
     };
     if (req.body.audio) {
       var date = new Date();
-      var timeStamp = date.toLocaleString(); 
+      var timeStamp = date.toLocaleString();
       Uploads.uploadAudio(req.body.audio, req.body._user.toString(), timeStamp);
 
-      var filename = req.body._user.toString() + timeStamp + '.wav'; 
-      missionAnswer.audio = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+      var filename = req.body._user.toString() + timeStamp + '.wav';
+      missionAnswer.audio = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
     };
     if (req.body.video)  {
       var date = new Date();
-      var timeStamp = date.toLocaleString(); 
+      var timeStamp = date.toLocaleString();
       Uploads.uploadVideo(req.body.video, req.body._user.toString(), timeStamp);
 
-      var filename = req.body._user.toString() + timeStamp + '.mp4'; 
-      missionAnswer.video = 'https://s3.amazonaws.com/compcult/minhaarvore/' + filename;
+      var filename = req.body._user.toString() + timeStamp + '.mp4';
+      missionAnswer.video = 'https://s3.amazonaws.com/compcult/i9edu/' + filename;
     };
     if (req.body.text_msg) missionAnswer.text_msg         = req.body.text_msg;
     if (req.body.location_lat) missionAnswer.location_lat = req.body.location_lat;
@@ -159,7 +159,7 @@ router.put('/:mission_id', function(req, res) {
         });
       }
     }
-    
+
     missionAnswer.save(function(err) {
       if (err) {
         res.status(400).send(err);
@@ -195,7 +195,7 @@ router.get('/missions', function(req, res) {
   var mission_name = req.query.missionname;
   MissionAnswer.find({mail: mission_name}, function (err, mission) {
         if (err != null){
-            console.log(err); 
+            console.log(err);
         }
         res.json(mission);
   });
