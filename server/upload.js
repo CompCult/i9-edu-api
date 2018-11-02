@@ -2,10 +2,11 @@ var AWS = require('aws-sdk');
 var fs = require('fs');
 
 var s3 =  new AWS.S3({
-  accessKeyId: "AKIAJT4TSF276AFENMGQ",
-  secretAccessKey: "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",
-  region: "us-east-1"
+  accessKeyId: process.env.S3_KEY,
+  secretAccessKey: process.env.S3_SECRET,
+  region: process.env.S3_REGION
 });
+
 
 class Uploads {
   static async uploadFile(file, _user, stamp){
